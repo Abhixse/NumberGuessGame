@@ -1,0 +1,26 @@
+name: Build and Run C++ Game
+
+on:
+  push:
+    branches:
+      - main  # You can adjust this to your specific branch
+  pull_request:
+    branches:
+      - main  # You can adjust this to your specific branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # This specifies that the job should run on the latest Ubuntu environment
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checks out the code from the repository
+
+    - name: Install g++ compiler
+      run: sudo apt-get update && sudo apt-get install -y g++
+
+    - name: Compile the game
+      run: |
+        g++ -o game game.cpp  # Replace `game.cpp` with the name of your C++ file
+        chmod +x game  # Ensure the compiled executable is executable
+        ./game  # Run the game
