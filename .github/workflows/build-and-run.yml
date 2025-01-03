@@ -21,6 +21,6 @@ jobs:
 
     - name: Compile the game
       run: |
-        g++ -o game game.cpp  # Replace `game.cpp` with the name of your C++ file
+        g++ -o game main.cpp  # Replace `game.cpp` with the name of your C++ file
         chmod +x game  # Ensure the compiled executable is executable
         ./game  # Run the game
