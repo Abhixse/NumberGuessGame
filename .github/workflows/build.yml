@@ -1,0 +1,24 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use Ubuntu as the environment to build the C++ program
+
+    steps:
+    - name: Checkout code from GitHub
+      uses: actions/checkout@v2  # Checkout the repository
+
+    - name: Set up C++ compiler
+      uses: actions/setup-cpp@v1
+      with:
+        compiler: g++  # Set up the C++ compiler (GCC)
+
+    - name: Compile C++ code
+      run: |
+        g++ -o my_program main.cpp  # Replace main.cpp with your file name
+        ./my_program  # Run the compiled program
